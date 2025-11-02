@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,7 @@
 
     body {
       font-family: 'Share Tech Mono', monospace;
-      background-color: #06000f;
+      background-color: #020a02;
       color: #00ff9d;
       display: flex;
       flex-direction: column;
@@ -22,11 +23,7 @@
 
     h1 {
       color: #00ff9d;
-      text-shadow: 
-        0 0 15px #00ff9d, 
-        0 0 30px #00ff9d,
-        0 0 45px #ff00e6,
-        0 0 70px #ff00e6;
+      text-shadow: 0 0 10px #00ff9d, 0 0 25px #00ff9d, 0 0 50px #00ff9d;
       font-family: 'Orbitron', sans-serif;
       letter-spacing: 2px;
       margin-bottom: 40px;
@@ -34,8 +31,12 @@
     }
 
     @keyframes flicker {
-      0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-      20%, 24%, 55% { opacity: 0.3; }
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0.3;
+      }
     }
 
     input {
@@ -46,7 +47,7 @@
       font-size: 18px;
       padding: 10px 20px;
       outline: none;
-      width: 260px;
+      width: 250px;
       text-align: center;
       letter-spacing: 1px;
       box-shadow: 0 0 10px #00ff9d;
@@ -54,9 +55,7 @@
     }
 
     input:focus {
-      border-color: #ff00e6;
-      color: #ff00e6;
-      box-shadow: 0 0 20px #ff00e6, 0 0 40px #00ff9d;
+      box-shadow: 0 0 20px #00ff9d, 0 0 40px #00ff9d;
     }
 
     input::placeholder {
@@ -66,8 +65,8 @@
     button {
       margin-top: 20px;
       background-color: transparent;
-      border: 2px solid #ff00e6;
-      color: #ff00e6;
+      border: 2px solid #00ff9d;
+      color: #00ff9d;
       font-size: 18px;
       padding: 10px 25px;
       border-radius: 8px;
@@ -75,14 +74,12 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       transition: all 0.3s;
-      text-shadow: 0 0 10px #ff00e6;
     }
 
     button:hover {
       background-color: #00ff9d;
-      border-color: #00ff9d;
-      color: #06000f;
-      box-shadow: 0 0 20px #00ff9d, 0 0 40px #ff00e6;
+      color: #011a0c;
+      box-shadow: 0 0 20px #00ff9d, 0 0 40px #00ff9d;
     }
 
     #message {
@@ -94,7 +91,7 @@
       opacity: 0;
       transform: translateY(10px);
       transition: all 0.5s ease;
-      text-shadow: 0 0 8px #00ff9d, 0 0 15px #ff00e6;
+      text-shadow: 0 0 8px #00ff9d;
       white-space: pre-line;
     }
 
@@ -111,8 +108,8 @@
       height: 100%;
       background: repeating-linear-gradient(
         to bottom,
-        rgba(255, 255, 255, 0.04),
-        rgba(255, 255, 255, 0.04) 1px,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.05) 1px,
         transparent 1px,
         transparent 3px
       );
@@ -130,8 +127,8 @@
     }
 
     @keyframes glowPulse {
-      from { text-shadow: 0 0 10px #00ff9d, 0 0 25px #ff00e6; }
-      to { text-shadow: 0 0 30px #00ff9d, 0 0 60px #ff00e6; }
+      from { text-shadow: 0 0 5px #00ff9d; }
+      to { text-shadow: 0 0 25px #00ff9d, 0 0 50px #00ff9d; }
     }
   </style>
 </head>
@@ -147,32 +144,22 @@
   <div id="message"></div>
 
   <script>
-    const messages = {
-      "rose123": "🌿 ROSE PROTOCOL:\nSignal received.\nYour code pulses through neon veins of the network.",
-      "star456": "💫 STAR PROTOCOL:\nTransmission stable.\nYou illuminate the grid with data and grace.",
-      "sun789": "☀️ SUN PROTOCOL:\nCore energy active.\nYou radiate life into the cybervoid."
-    };
-
-    function typeWriterEffect(element, text, speed = 35) {
-      element.innerText = "";
-      let i = 0;
-      const interval = setInterval(() => {
-        element.innerText += text.charAt(i);
-        i++;
-        if (i === text.length) clearInterval(interval);
-      }, speed);
-    }
-
     function showMessage() {
       const code = document.getElementById("codeInput").value.trim().toLowerCase();
       const messageDiv = document.getElementById("message");
 
-      messageDiv.classList.add("show");
+      const messages = {
+        "rose123": "🌿 ROSE PROTOCOL:\nSignal received.\nYour essence grows in every encrypted bloom.",
+        "star456": "💫 STAR PROTOCOL:\nTransmission stable.\nYour light continues to guide through data streams.",
+        "sun789": "☀️ SUN PROTOCOL:\nCore energy active.\nYou radiate stability in this digital void."
+      };
 
       if (messages[code]) {
-        typeWriterEffect(messageDiv, messages[code]);
+        messageDiv.innerText = messages[code];
+        messageDiv.classList.add("show");
       } else {
-        typeWriterEffect(messageDiv, "⚠️ ACCESS DENIED.\nCODE INVALID.");
+        messageDiv.innerText = "⚠️ ACCESS DENIED.\nCODE INVALID.";
+        messageDiv.classList.add("show");
       }
     }
   </script>
